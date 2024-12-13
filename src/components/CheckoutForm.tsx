@@ -32,7 +32,10 @@ export default function CheckoutForm() {
       const price = await getDeliveryPrice();
       setDeliveryPrice(price);
     };
-    fetchDeliveryPrice();
+    setTimeout(async () => {
+      // for letting IndexedDB to initialize
+      await fetchDeliveryPrice();
+    }, 1000);
   }, []);
 
   const { register, handleSubmit } = useForm<FormDataType>({
